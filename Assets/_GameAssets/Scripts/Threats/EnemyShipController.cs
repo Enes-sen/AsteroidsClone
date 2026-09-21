@@ -9,7 +9,7 @@ public class EnemyShipController : MonoBehaviour,IShootable
     private Rigidbody2D _Enemyrb;
     [SerializeField] private float _speed;
     [SerializeField] private int DieScore=350;
-    [SerializeField] private float _Shotrate=0.5f;
+    [SerializeField] private float _Shotrate=0.75f;
     [SerializeField] private ParticleSystem _exploding;
     [SerializeField] private AudioSource _Source;
     [SerializeField] private int Shotindex,Shipindex,ExplodeIndex;
@@ -64,7 +64,7 @@ public class EnemyShipController : MonoBehaviour,IShootable
     public void Die()
     {
         _exploding.Play();
-        SoundManager.instance.PlayFx(ExplodeIndex, _Source);
+        SoundManager.instance.PlayFx(ExplodeIndex, _Source,1f);
         ScoreManager.instance.IncreaseScore(DieScore);
         UiManager.instance.UpdateScore();
         Destroy(gameObject,0.1f);
@@ -78,7 +78,7 @@ public class EnemyShipController : MonoBehaviour,IShootable
             Vector2 dir = _target.position - transform.position;
             var bullet = Instantiate<GameObject>(BulletP, pos, Quaternion.identity);
             SoundManager.instance.PlayFx(Shotindex, _Source,1f);
-            bullet.GetComponent<Rigidbody2D>().velocity = (_speed * 1.5f) * Time.fixedDeltaTime * dir;
+            bullet.GetComponent<Rigidbody2D>().velocity = (_speed * 3f) * Time.fixedDeltaTime * dir;
         }
     }
 }

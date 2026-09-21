@@ -32,7 +32,7 @@ public class AsteroidController : MonoBehaviour,IDamagable, IShootable
     public Spawnedobj WhenDestroyed()
     {
         DeathPar.Play();
-        SoundManager.instance.PlayFx(indexDestroy, _Source, 0.7f);
+        
         StartCoroutine(nameof(BackTo),0.04f);
         if (smallerPrefab != null)
         {
@@ -44,7 +44,7 @@ public class AsteroidController : MonoBehaviour,IDamagable, IShootable
     }
     private IEnumerator BackTo(float wait)
     {
-        
+        SoundManager.instance.PlayFx(indexDestroy, _Source, 0.7f);
         yield return new WaitForSeconds(wait);
         if (SpwTypeR != Spawnedobj.littleOrShip)
         {
