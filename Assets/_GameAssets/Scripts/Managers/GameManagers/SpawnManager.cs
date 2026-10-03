@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]private List<GameObject> prefabs;
+    [SerializeField] private Transform SpawnRef;
     public Queue<GameObject> _spawnQueue = new();
     public readonly float Limitobjs=12;
     public static SpawnManager instance;
@@ -19,8 +19,7 @@ public class SpawnManager : MonoBehaviour
         {
             foreach (GameObject prefab in prefabs)
             {
-                var yaxis = transform.position.y;
-                var obj = Instantiate(prefab, new(Random.Range(yaxis, -yaxis), Random.Range(yaxis,-yaxis)+0.05f,0f), Quaternion.identity);
+                var obj = Instantiate(prefab, new(Random.Range(-SpawnRef.position.x,SpawnRef.position.x), SpawnRef.position.y,0f), Quaternion.identity);
                 EnqueueToQueue(obj);
             }
         }
@@ -34,9 +33,8 @@ public class SpawnManager : MonoBehaviour
     {
         if (_spawnQueue.Count != 0)
         {
-            float _Rnum = 9.2f;
             GameObject obj = DequeueFromQueue();
-            Vector3 pos = new(Random.Range(-_Rnum, _Rnum), Random.Range(-_Rnum, _Rnum), transform.position.z);
+            Vector3 pos = new(Random.Range(-SpawnRef.position.x, SpawnRef.position.x), SpawnRef.position.y,0f);
             obj.transform.position = pos;
             obj.SetActive(true);
 

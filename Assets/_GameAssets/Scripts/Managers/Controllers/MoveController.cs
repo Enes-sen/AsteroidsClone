@@ -9,7 +9,7 @@ public class MoveController : MonoBehaviour, IMoveable,IRotateable
     {
         Vector2 movedir = transform.up * _input;
         movedir = movedir.normalized * speed;
-        _rb.velocity = movedir;
+        _rb.AddForce(movedir,ForceMode2D.Force);
     }
 
     public void Rotate(float input,float _force,Rigidbody2D _rb)

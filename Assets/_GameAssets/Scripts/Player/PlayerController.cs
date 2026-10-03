@@ -8,12 +8,11 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private float Speed = 1f;
+    [SerializeField] private float Speed = 2f;
     [SerializeField] private float _Rotspeed,Shotindex,Blowupindex,thurstindex;
     [SerializeField] private AudioSource _Source,_scr2;
     [SerializeField] private ParticleSystem _Deathpar;
     private readonly float _delay = 0.5f;
-    private const string _pbullet= "PBullet";
     private bool _canshot = true;
     private bool _isdead = false;
     [Header("Consts")]
@@ -23,8 +22,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject prefab;
     [Header("Components")]
     [SerializeField] private Rigidbody2D _rb;
-    private SwapController _swpcontroller;
     [SerializeField] private Animator _anim;
+    private SwapController _swpcontroller;
     private MoveController _moveManager;
     private AnimationController _animator;
     private PlayerInput _playeInput;
