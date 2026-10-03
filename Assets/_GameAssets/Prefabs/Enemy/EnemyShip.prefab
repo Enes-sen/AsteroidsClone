@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 7
   DieScore: 175
-  _Shotrate: 0.5
+  _Shotrate: 2
   _exploding: {fileID: 4353304469781143336}
   _Source: {fileID: 49639751910838734}
   Shotindex: 1

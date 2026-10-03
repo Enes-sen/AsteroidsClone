@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69bb1ae305d84364aac17b53ada1554d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2.5
+  Speed: 1
   _Rotspeed: 360
   Shotindex: 1
   Blowupindex: 4
